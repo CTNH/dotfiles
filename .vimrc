@@ -8,7 +8,6 @@ set hlsearch
 set showcmd 
 
 " ==== Run on start ====
-autocmd VimEnter * Tagbar
 autocmd VimEnter * NERDTree
 au VimEnter * wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
