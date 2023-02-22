@@ -1,0 +1,14 @@
+/*
+# Track these files in home
+!.gitignore
+!.zshrc
+!.vimrc
+
+
+
+# Ignore all directories in .config
+!.config/
+.config/*
+# Except for ranger
+!.config/ranger/
+
