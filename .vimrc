@@ -7,7 +7,6 @@ set splitright
 set hlsearch
 set showcmd 
 
-
 " ==== Run on start ====
 autocmd VimEnter * Tagbar
 autocmd VimEnter * NERDTree
@@ -40,13 +39,17 @@ inoremap [, [<CR>],<C-c>O
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
+" Custom Plugin path
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'preservim/tagbar'
+
+Plugin 'drewtempelmeyer/palenight.vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'catppuccin/vim'
 
 
 " All of your Plugins must be added before the following line
@@ -67,4 +70,21 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" ==== Color Scheme ====
+" One dark
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+colorscheme onedark
+
+" Palenight
+"set background=dark
+"colorscheme palenight
 
