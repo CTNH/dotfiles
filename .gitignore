@@ -7,10 +7,12 @@
 !.LICENSE.md
 
 
-
 # Ignore all directories in .config
 !.config/
 .config/*
-# Except for ranger
+# Exception
 !.config/ranger/
+!.config/sxiv/
 
+
+!.config/Code - OSS/User/
