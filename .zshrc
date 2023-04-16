@@ -21,7 +21,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-PATH=$PATH:/home/hopkins/bin/
+PATH=$PATH:~/bin/
 export BAT_THEME="TwoDark"
 
 # Personal Aliases
@@ -32,7 +32,9 @@ alias ytbv="yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best
 alias ytba="yt-dlp -f \"bestaudio[ext=m4a]\""
 alias am+="amixer sset Master 5%+"
 alias am-="amixer sset Master 5%-"
-alias klog="qdbus org.kde.ksmserver /KSMServer logout 0 0 0"
+alias kdelogout="qdbus org.kde.ksmserver /KSMServer logout 0 0 0"
+alias wttr="curl wttr.in"
+alias map="npx mapscii"
 
 #alias fh="cd \"$(find /home/hopkins -type d | fzf)\""
 #alias fm=cd "$(find /mnt -type d | fzf)"
