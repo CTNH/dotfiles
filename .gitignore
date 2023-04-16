@@ -13,6 +13,7 @@
 # Exception
 !.config/ranger/
 !.config/sxiv/
+!.config/mpv/
 
 
 !.config/Code - OSS/User/
