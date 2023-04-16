@@ -24,7 +24,7 @@ set path+=**  " tab completion
 set wildmenu  " display all matching files
 
 " ---- Shortcuts
-nnoremap ,java :-1read /home/hopkins/.vim_custom/temp.java<CR>wi
+nnoremap ,java :-1read ~/.vim_custom/temp.java<CR>wi
 
 inoremap (; (<CR>);<C-c>O
 inoremap (, (<CR>),<C-c>O
