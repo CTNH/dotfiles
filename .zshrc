@@ -30,6 +30,7 @@ alias q=exit
 alias rr=ranger
 alias ytbv="yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best\""
 alias ytba="yt-dlp -f \"bestaudio[ext=m4a]\""
+alias ytbapl="yt-dlp -f \"bestaudio[ext=m4a]\" -o \"%(playlist_index)s %(fulltitle)s [%(id)s].%(ext)s\""
 alias am+="amixer sset Master 5%+"
 alias am-="amixer sset Master 5%-"
 alias kdelogout="qdbus org.kde.ksmserver /KSMServer logout 0 0 0"
