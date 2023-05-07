@@ -36,11 +36,12 @@ alias am-="amixer sset Master 5%-"
 alias kdelogout="qdbus org.kde.ksmserver /KSMServer logout 0 0 0"
 alias wttr="curl wttr.in"
 alias map="npx mapscii"
+alias gitrc='(){if [ -z $1 ]; then echo "Please enter a name for the repository!"; else ssh pie -t "git init --bare /mnt/drive_ext/Git/$1.git"; fi;}'
 
 #alias fh="cd \"$(find /home/hopkins -type d | fzf)\""
 #alias fm=cd "$(find /mnt -type d | fzf)"
 
 
 # Custom script that does same as macchina
-#macchina
-mfetch
+myfetch r  # r to random arts
+
