@@ -1,0 +1,79 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files
+import:
+  - ~/.config/alacritty/catppuccin-frappe_custom.yml
+
+window:
+  # Window dimensions (changes require restart)
+  dimensions:
+    columns: 110
+    lines: 28
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: false
+
+  decorations: none
+
+  # Background opacity floating point number from `0.0` (completely transparent) to `1.0` (opaque).
+  opacity: 0.98
+
+  # Startup Mode (changes require restart)
+  startup_mode: Windowed
+  #startup_mode: Fullscreen
+
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer; '0' disables scrolling.
+  history: 10000
+  # Scrolling distance multiplier.
+  #multiplier: 3
+
+# Font configuration
+font:
+  normal:
+    family: source code pro
+    style: Medium   # Extra Light, Light, Regular, Medium, Demi Bold, Bold, Black
+
+  # Point size
+  size: 10.0
+
+colors:
+  # Transparent cell backgrounds; Whether `window.opacity` applies to all cell 
+  # backgrounds or only to the default background. 
+  # When set to `true` all cells will be transparent regardless of their background color.
+  transparent_background_colors: true
+
+selection:
+  # This string contains all characters that are used as separators for "semantic words".
+  semantic_escape_chars: ",.│`|:\"' ()[]{}<>-\t"
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Off
+  # Vi mode cursor style
+  #vi_mode_style: None
+
+shell:
+  program: /bin/zsh
+
+# Startup directory; if unset or `None`, working directory of parent process will be used.
+working_directory: None
+
+
+# Key bindings
+# If the same trigger is assigned to multiple actions, all of them are executed
+# in the order they were defined in.
+key_bindings:
+  - { key: F11,   action: ToggleFullscreen }
+  - { key: W, mods: Control|Shift, action: Quit }
+  - { key: PageUp,    mods: Shift,   action: ScrollHalfPageUp   }
+  - { key: PageDown,  mods: Shift,   action: ScrollHalfPageDown }
+  - { key: Home,      mods: Shift,   action: ScrollToTop    }
+  - { key: End,       mods: Shift,   action: ScrollToBottom }
+  - { key: Up,        mods: Shift,   action: ScrollLineUp }
+  - { key: Down,      mods: Shift,   action: ScrollLineDown }
+
