@@ -19,7 +19,8 @@ window:
   opacity: 0.98
 
   # Startup Mode (changes require restart)
-  startup_mode: Windowed
+  #startup_mode: Windowed
+  startup_mode: Maximized
   #startup_mode: Fullscreen
 
   # Allow terminal applications to change Alacritty's window title.
@@ -48,7 +49,7 @@ colors:
 
 selection:
   # This string contains all characters that are used as separators for "semantic words".
-  semantic_escape_chars: ",.│`|:\"' ()[]{}<>-\t"
+  semantic_escape_chars: ",.│`|:\"' ()[]{}<>-_\t"
 
 cursor:
   style:
