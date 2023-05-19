@@ -25,12 +25,16 @@ PATH=$PATH:~/bin/				# Append ~/bin to $PATH
 export BAT_THEME="TwoDark"		# Theme for bat
 
 # ==== Aliases ====
+alias ls=lsd
 alias py=python
 alias rr=ranger
 alias wttr="curl wttr.in"
 alias map="npx mapscii"
 # Creates bare git repo at remote ssh server
 alias pigcr='(){if [ -z $1 ]; then echo "Please provide a name for the repository!"; else ssh pie -t "git init --bare /mnt/drive_ext/Git/$1.git"; fi;}'
+
+alias virsh-list="virsh --connect qemu:///system list --all"
+alias virtmachine="nohup virt-manager --connect qemu:///system --show-domain-console "
 
 # --- yt-dlp ---
 alias ytbv="yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best\""
