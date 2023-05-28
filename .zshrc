@@ -23,6 +23,7 @@ fi
 # ==== Variables ==== 
 PATH=$PATH:~/bin/				# Append ~/bin to $PATH
 export BAT_THEME="TwoDark"		# Theme for bat
+export EDITOR=nvim
 
 # ==== Aliases ====
 alias ls=lsd
