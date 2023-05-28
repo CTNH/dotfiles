@@ -3,6 +3,7 @@
 # Import additional configuration files
 import:
   - ~/.config/alacritty/catppuccin-frappe_custom.yml
+    #  - ~/.config/alacritty/custom_theme.yml
 
 window:
   # Window dimensions (changes require restart)
