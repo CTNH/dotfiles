@@ -11,9 +11,28 @@
 !.config/
 .config/*
 # Exception
+!.config/alacritty/
 !.config/ranger/
 !.config/sxiv/
 !.config/mpv/
+!.config/tmux/
+.config/tmux/*
+!.config/tmux/tmux.conf
+!.config/nvim
+!.config/kitty
 
 
 !.config/Code - OSS/User/
+.config/mpv/watch_later
+
+
+# Ignore all in bin
+!bin/
+bin/*
+# Exception
+!bin/myfetch
+
+
+!sbin/
+
+.config/nvim/lazy-lock.json
