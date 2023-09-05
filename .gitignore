@@ -19,7 +19,9 @@
 .config/tmux/*
 !.config/tmux/tmux.conf
 !.config/nvim
-!.config/kitty
+!.config/musikcube/
+.config/musikcube/*
+!.config/musikcube/hotkeys.json
 
 
 !.config/Code - OSS/User/
