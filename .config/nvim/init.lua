@@ -37,6 +37,7 @@ local plugins = {
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
+	{"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
 }
 
 require("core.keymaps")
@@ -57,6 +58,9 @@ require('tabline').setup({				-- Tabline
     brackets = { '[', ']' },	-- file name brackets surrounding
     inactive_tab_max_length = 0	-- max length of inactive tab titles, 0 to ignore
 })
+require('glow').setup({
+	install_path = "~/bin"
+})
 
 
 -- ==== Keybinds ====
@@ -66,4 +70,7 @@ vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true })
 vim.cmd("colorscheme palenight")
 vim.cmd("set number")		-- Line numbers
 vim.cmd("set hidden")		-- Allows switching buffer without saving
+vim.cmd("set nofoldenable")	-- Disable folds at file open
+vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent
+vim.cmd("highlight LineNr ctermfg=242")		-- Allows line numbers to be more visible
 
