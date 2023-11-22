@@ -48,8 +48,11 @@ function bwu() {
 PATH=$PATH:~/bin/				# Append ~/bin to $PATH
 export BAT_THEME="TwoDark"		# Theme for bat
 export EDITOR=nvim
+export PAGER=bat
+#export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python	# Cache for python
 
 # ==== Aliases ====
+alias r="echo > /dev/null"
 alias ls=lsd
 alias py=python
 alias rr=ranger
