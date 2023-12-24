@@ -6,8 +6,26 @@ local plugins = {
 	'jiangmiao/auto-pairs',				-- Auto close parentheses
 	{									-- Fuzzy Finder
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.1',
 		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- },
+	{
+		"shellRaining/hlchunk.nvim",
+		event = { "UIEnter" },
+		config = function()
+			require("hlchunk").setup({
+				indent = {
+					enable = true,
+					use_treesitter = false
+				},
+				-- hl_line_num = {
+				-- 	enable = true,
+				-- }
+			})
+		end
 	},
 	-- Appearance
 	'joshdick/onedark.vim',				-- Theme
@@ -25,7 +43,16 @@ local plugins = {
 	-- 	},
 	-- },
 	-- LSP & Autocomplete
-	'nvim-treesitter/nvim-treesitter',	-- Language parser for syntax highlight
+	{
+		'nvim-treesitter/nvim-treesitter',	-- Language parser for syntax highlight
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end,
+	},
 	'neovim/nvim-lspconfig',
 	"williamboman/mason.nvim",			-- LSP Manager
 	"williamboman/mason-lspconfig.nvim",
@@ -62,6 +89,16 @@ require('glow').setup({
 	install_path = "~/bin"
 })
 
+-- require("ibl").setup()
+
+
+-- Telescope keybinds
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 
 -- ==== Keybinds ====
 vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true })
@@ -71,6 +108,6 @@ vim.cmd("colorscheme palenight")
 vim.cmd("set number")		-- Line numbers
 vim.cmd("set hidden")		-- Allows switching buffer without saving
 vim.cmd("set nofoldenable")	-- Disable folds at file open
-vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent
+-- vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent
 vim.cmd("highlight LineNr ctermfg=242")		-- Allows line numbers to be more visible
 
