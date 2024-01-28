@@ -65,6 +65,7 @@ local plugins = {
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+	{'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
 }
 
 require("core.keymaps")
@@ -93,11 +94,21 @@ require('glow').setup({
 
 
 -- Telescope keybinds
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local telescopeBuiltin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescopeBuiltin.find_files, {})
+vim.keymap.set('n', '<leader>fg', telescopeBuiltin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', telescopeBuiltin.buffers, {})
+vim.keymap.set('n', '<leader>fh', telescopeBuiltin.help_tags, {})
+
+vim.keymap.set('n', '<leader>gf', telescopeBuiltin.git_files, {})
+vim.keymap.set('n', '<leader>gc', telescopeBuiltin.git_commits, {})
+
+vim.keymap.set('n', '<leader>bt', telescopeBuiltin.current_buffer_tags, {})
+vim.keymap.set('n', '<leader>bb', telescopeBuiltin.buffers, {})
+
+vim.keymap.set('n', '<leader>ts', telescopeBuiltin.treesitter, {})
+vim.keymap.set('n', '<leader>jl', telescopeBuiltin.jumplist, {})
+vim.keymap.set('n', '<leader>cs', telescopeBuiltin.colorscheme, {})
 
 
 -- ==== Keybinds ====
