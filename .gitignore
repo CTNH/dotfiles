@@ -23,6 +23,7 @@
 !.config/musikcube/
 .config/musikcube/*
 !.config/musikcube/hotkeys.json
+!.config/lazygit/
 
 
 !.config/Code - OSS/User/
