@@ -49,7 +49,9 @@ PATH=$PATH:~/bin/				# Append ~/bin to $PATH
 export BAT_THEME="TwoDark"		# Theme for bat
 export EDITOR=nvim
 export PAGER=bat
+export COREDUMP="/var/lib/systemd/coredump"
 #export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python	# Cache for python
+export LC_ALL="en_US.UTF-8"
 
 # ==== Aliases ====
 alias r="echo > /dev/null"
@@ -61,13 +63,15 @@ alias wttr="curl wttr.in"
 alias map="npx mapscii"
 alias bt="bluetooth toggle"
 # Creates bare git repo at remote ssh server
-alias pigcr='(){if [ -z $1 ]; then echo "Please provide a name for the repository!"; else ssh pie -t "git init --bare /mnt/drive_ext/Git/$1.git"; fi;}'
+alias pigcr='(){if [ -z $1 ]; then echo "Please provide a name for the repository!"; else ssh coffeepie -t "git init --bare /mnt/drive_ext/Git/$1.git"; fi;}'
 
 alias virsh-list="virsh --connect qemu:///system list --all"
 alias virtmachine="nohup virt-manager --connect qemu:///system --show-domain-console "
 alias kvmstart='(){virsh --connect qemu:///system start $1 & virt-manager --connect qemu:///system --show-domain-console $1}'
 
 alias pandoc="docker run --rm --volume '`pwd`:/data' pandoc/core"
+
+alias tmpv='(){mpv --profile=sw-fast --vo=kitty --vo-kitty-use-shm=yes --terminal --hwdec=auto $1}'
 
 # --- yt-dlp ---
 alias ytbv="yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best\""
