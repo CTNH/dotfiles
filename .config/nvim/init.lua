@@ -115,6 +115,11 @@ vim.keymap.set('n', '<leader>cs', telescopeBuiltin.colorscheme, {})
 vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true })
 
 -- ==== Startup ====
+-- vim.cmd("autocmd BufWrite * mkview")
+-- vim.cmd("autocmd BufRead * silent! loadview")
+vim.cmd("autocmd BufWinLeave *.* mkview")				-- Save folds
+vim.cmd("autocmd BufWinEnter *.* silent! loadview")		-- Load folds
+
 vim.cmd("colorscheme palenight")
 vim.cmd("set number")		-- Line numbers
 vim.cmd("set hidden")		-- Allows switching buffer without saving
