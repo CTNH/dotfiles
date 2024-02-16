@@ -8,29 +8,30 @@ local plugins = {
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
-	-- {
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	main = "ibl",
-	-- },
 	{
-		"shellRaining/hlchunk.nvim",
-		event = { "UIEnter" },
-		config = function()
-			require("hlchunk").setup({
-				indent = {
-					enable = true,
-					use_treesitter = false
-				},
-				-- hl_line_num = {
-				-- 	enable = true,
-				-- }
-			})
-		end
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 	},
+	-- {
+	-- 	"shellRaining/hlchunk.nvim",
+	-- 	event = { "UIEnter" },
+	-- 	config = function()
+	-- 		require("hlchunk").setup({
+	-- 			indent = {
+	-- 				enable = true,
+	-- 				use_treesitter = false
+	-- 			},
+	-- 		})
+	-- 	end
+	-- },
 	-- Appearance
 	'joshdick/onedark.vim',				-- Theme
 	'drewtempelmeyer/palenight.vim',	-- Theme
-	'vim-airline/vim-airline',			-- Status bar
+	-- 'vim-airline/vim-airline',			-- Status bar
+	{									-- Status bar
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
 	{									-- Tab bar
 		'crispgm/nvim-tabline',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -66,6 +67,7 @@ local plugins = {
 	},
 	{"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
 	{'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
+	{'lervag/vimtex'},					-- LaTeX
 }
 
 require("core.keymaps")
@@ -86,11 +88,69 @@ require('tabline').setup({				-- Tabline
     brackets = { '[', ']' },	-- file name brackets surrounding
     inactive_tab_max_length = 0	-- max length of inactive tab titles, 0 to ignore
 })
+
+local lualineTheme = require'lualine.themes.onedark'
+lualineTheme.normal.a.bg = '#4078f2'
+lualineTheme.insert.a.bg = '#50a14f'
+require('lualine').setup {
+	options = {
+		icons_enabled = true,
+		theme = lualineTheme,
+		component_separators = { left = '', right = ''},
+		section_separators = { left = '', right = ''},
+		disabled_filetypes = {
+			statusline = {},
+			winbar = {},
+		},
+		ignore_focus = {},
+		always_divide_middle = true,
+		globalstatus = false,
+		refresh = {
+			statusline = 1000,
+			tabline = 1000,
+			winbar = 1000,
+		}
+	},
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = {'branch', 'diff', 'diagnostics'},
+		lualine_c = {'filename'},
+		lualine_x = {'filetype', 'encoding', 'fileformat'},
+		lualine_y = {'progress'},
+		lualine_z = {'location'}
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = {'filename'},
+		lualine_x = {'filetype', 'encoding', 'fileformat'},
+		lualine_y = {'progress'},
+		lualine_z = {'location'}
+	},
+	tabline = {
+		lualine_a = {'buffers'},
+		lualine_b = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {'tabs'}
+	},
+	winbar = {},
+	inactive_winbar = {},
+	extensions = {}
+}
 require('glow').setup({
 	install_path = "~/bin"
 })
-
--- require("ibl").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"bashls",
+		"clangd",
+		"lua_ls",
+		"pylsp"
+	}
+})
+require("ibl").setup()
 
 
 -- Telescope keybinds
