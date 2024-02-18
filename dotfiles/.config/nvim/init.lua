@@ -173,6 +173,10 @@ vim.keymap.set('n', '<leader>cs', telescopeBuiltin.colorscheme, {})
 
 -- ==== Keybinds ====
 vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {})
+vim.keymap.set('n', '<leader>bx', ':bd<CR>', {})
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', {})
+vim.keymap.set('n', '<leader>p', ':bprev<CR>', {})
 
 -- ==== Startup ====
 -- vim.cmd("autocmd BufWrite * mkview")
