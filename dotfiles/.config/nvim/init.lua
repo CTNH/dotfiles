@@ -8,7 +8,15 @@ local plugins = {
 	'jiangmiao/auto-pairs',				-- Auto close parentheses
 	{									-- Fuzzy Finder
 		'nvim-telescope/telescope.nvim',
-		dependencies = { 'nvim-lua/plenary.nvim' }
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		config = function()
+			require('telescope').setup({
+				pickers = {
+					-- Show hidden files in find files
+					find_files = {hidden = true}
+				}
+			})
+		end
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -164,7 +172,24 @@ local plugins = {
 	{									-- Terminal in nvim
 		'akinsho/toggleterm.nvim',
 		version = "*",
-		opts = {}
+		opts = {
+			open_mapping = [[<c-`>]],
+			-- size = 20,
+			hide_numbers = true,
+			persist_mode = true,
+			persist_size = true,
+			close_on_exit = true,
+			start_in_insert = true,
+			-- insert_mappings = false;
+			-- horizontal | vertical | float
+			direction = "float",
+			-- shell = vim.o.shell,
+			shell = "/usr/bin/zsh",
+			float_opts = {
+				border = "curved",
+				winblend = 0,
+			},
+		}
 	},
 	{'lervag/vimtex'},					-- LaTeX
 	{									-- Smooth scroll
@@ -211,12 +236,8 @@ local plugins = {
 			require('marks').setup()
 		end
 	},
-	{
-		'akinsho/toggleterm.nvim',
-		version = "*",
-		opts = {}
-	},
 }
+
 
 -- Load plugins first as some keymaps uses plugins
 require("core.plugin-manager")		-- Lazy plugin manager bootstrap
@@ -236,6 +257,7 @@ vim.opt.cursorline = true
 -- Change cursor in normal & visual mode from block to line
 vim.opt.guicursor = "c-sm:block,n-v-i-ci-ve:ver25,r-cr-o:hor20"
 
+vim.opt.shell = "/usr/bin/zsh"
 
 -- ==== Startup ====
 -- vim.cmd("autocmd BufWrite * mkview")

@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 
--- Winodws keys
+-- Windows keys
 vim.api.nvim_set_keymap("n", "<a-h>", "<c-w>h", {noremap=true})
 vim.api.nvim_set_keymap("n", "<a-j>", "<c-w>j", {noremap=true})
 vim.api.nvim_set_keymap("n", "<a-k>", "<c-w>k", {noremap=true})
@@ -14,21 +14,47 @@ vim.api.nvim_set_keymap("i", "<c-bs>", "<esc>cvb", {noremap=true})
 
 
 -- Emacs keybinds in insert mode
-vim.api.nvim_set_keymap("i", "<c-a>", "<Home>",    {noremap=true})
-vim.api.nvim_set_keymap("i", "<c-b>", "<Left>",    {noremap=true})
-vim.api.nvim_set_keymap("i", "<c-e>", "<End>",     {noremap=true})
-vim.api.nvim_set_keymap("i", "<c-f>", "<Right>",   {noremap=true})
-vim.api.nvim_set_keymap("i", "<a-g>", "<c-Left>",  {noremap=true})
-vim.api.nvim_set_keymap("i", "<a-f>", "<c-Right>", {noremap=true})
-vim.api.nvim_set_keymap("i", "<a-d>", "<ESC>lvec", {noremap=true})
+vim.keymap.set("i", "<c-a>", "<Home>",    {noremap=true})
+vim.keymap.set("i", "<c-b>", "<Left>",    {noremap=true})
+vim.keymap.set("i", "<c-e>", "<End>",     {noremap=true})
+vim.keymap.set("i", "<c-f>", "<Right>",   {noremap=true})
+vim.keymap.set("i", "<a-g>", "<c-Left>",  {noremap=true})
+vim.keymap.set("i", "<a-f>", "<c-Right>", {noremap=true})
+vim.keymap.set("i", "<a-d>", "<ESC>lvec", {noremap=true})
 
 
 -- ==== Buffers ====
-vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true })
+vim.keymap.set('n', '<C-t>', ':tabnew<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {})
-vim.keymap.set('n', '<leader>bx', ':bd<CR>', {})
-vim.keymap.set('n', '<leader>n', ':bnext<CR>', {})
-vim.keymap.set('n', '<leader>p', ':bprev<CR>', {})
+vim.keymap.set('n', '<leader>bx', ':bd<CR>', 	{})
+vim.keymap.set('n', '<leader>n',  ':bnext<CR>', {})
+vim.keymap.set('n', '<leader>p',  ':bprev<CR>', {})
+
+
+-- Terminal
+vim.keymap.set('t', '<s-esc>', [[<C-\><C-n>]],		 {noremap = true})
+vim.keymap.set('t', '<C-h>',   [[<C-\><C-n><C-W>h]], {noremap = true})
+vim.keymap.set('t', '<C-j>',   [[<C-\><C-n><C-W>j]], {noremap = true})
+vim.keymap.set('t', '<C-k>',   [[<C-\><C-n><C-W>k]], {noremap = true})
+vim.keymap.set('t', '<C-l>',   [[<C-\><C-n><C-W>l]], {noremap = true})
+
+vim.keymap.set(		-- Lazygit
+	"n",
+	"<leader>tl",
+	"<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<CR>",
+	{noremap = true, silent = true}
+)
+vim.keymap.set(
+	"v",
+	"<space>s",
+	function()
+    	require("toggleterm").send_lines_to_terminal(
+			"single_line",
+			trim_spaces,
+			{ args = vim.v.count }
+		)
+	end
+)
 
 
 -- Telescope keybinds
