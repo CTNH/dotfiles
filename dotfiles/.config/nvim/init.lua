@@ -1,7 +1,9 @@
 -- List of all plugins
 local plugins = {
 	-- Basic functional plugins
-	'nvim-tree/nvim-tree.lua',
+	{
+		'nvim-tree/nvim-tree.lua',
+	},
 	'nvim-tree/nvim-web-devicons',
 	'jiangmiao/auto-pairs',				-- Auto close parentheses
 	{									-- Fuzzy Finder
@@ -11,6 +13,9 @@ local plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
+		config = function()
+			require("ibl").setup()
+		end
 	},
 	-- {
 	-- 	"shellRaining/hlchunk.nvim",
@@ -30,11 +35,75 @@ local plugins = {
 	-- 'vim-airline/vim-airline',			-- Status bar
 	{									-- Status bar
 		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' }
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+			local lualineTheme = require'lualine.themes.onedark'
+			lualineTheme.normal.a.bg = '#4078f2'
+			lualineTheme.insert.a.bg = '#50a14f'
+			require('lualine').setup {
+				options = {
+					icons_enabled = true,
+					theme = lualineTheme,
+					component_separators = { left = '', right = ''},
+					section_separators = { left = '', right = ''},
+					disabled_filetypes = {
+						statusline = {},
+						winbar = {},
+					},
+					ignore_focus = {},
+					always_divide_middle = true,
+					globalstatus = false,
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
+					}
+				},
+				sections = {
+					lualine_a = {'mode'},
+					lualine_b = {'branch', 'diff', 'diagnostics'},
+					lualine_c = {'filename'},
+					lualine_x = {'filetype', 'encoding', 'fileformat'},
+					lualine_y = {'progress'},
+					lualine_z = {'location'}
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = {'filename'},
+					lualine_x = {'filetype', 'encoding', 'fileformat'},
+					lualine_y = {'progress'},
+					lualine_z = {'location'}
+				},
+				tabline = {
+					lualine_a = {'buffers'},
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {'tabs'}
+				},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = {}
+			}
+		end
 	},
 	{									-- Tab bar
 		'crispgm/nvim-tabline',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+			require('tabline').setup({				-- Tabline
+				show_index = true,			-- show tab index
+				show_modify = true,			-- show buffer modification indicator
+				show_icon = true,			-- show file extension icon
+				fnamemodify = ':t',			-- file name modifier
+				modify_indicator = '*',		-- modify indicator
+				no_name = 'No name',		-- no name buffer name
+				brackets = { '[', ']' },	-- file name brackets surrounding
+				inactive_tab_max_length = 0	-- max length of inactive tab titles, 0 to ignore
+			})
+		end,
 	},
 	-- {
 	-- 	'romgrk/barbar.nvim',
@@ -55,8 +124,25 @@ local plugins = {
 		end,
 	},
 	'neovim/nvim-lspconfig',
-	"williamboman/mason.nvim",			-- LSP Manager
-	"williamboman/mason-lspconfig.nvim",
+	{										-- LSP Manager
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"bashls",
+					"clangd",
+					"lua_ls",
+					"pylsp"
+				}
+			})
+		end
+	},
 	'hrsh7th/cmp-nvim-lsp',				-- nvim-cmp source for builtin LSP client
 	'hrsh7th/nvim-cmp',					-- Completion Engine
 	'saadparwaiz1/cmp_luasnip',			-- luasnip completion source for nvim-cmp
@@ -65,118 +151,91 @@ local plugins = {
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
-	{"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
-	{'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
+	{
+		"ellisonleao/glow.nvim",
+		cmd = "Glow",
+		-- config = true,
+		config = function()
+			require('glow').setup({
+				install_path = "~/bin"
+			})
+		end
+	},
+	{									-- Terminal in nvim
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		opts = {}
+	},
 	{'lervag/vimtex'},					-- LaTeX
+	{									-- Smooth scroll
+		"karb94/neoscroll.nvim",
+		config = function ()
+			require('neoscroll').setup({
+				mappings = {
+					'<C-u>',
+					'<C-d>',
+					'<C-b>',
+					'<C-f>',
+					'<C-y>',
+					'<C-e>',
+					'zt',
+					'zz',
+					'zb'
+				},
+				hide_cursor = false,          -- Hide cursor while scrolling
+				stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+				respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+				cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+				easing_function = nil,       -- Default easing function
+				pre_hook = nil,              -- Function to run before the scrolling animation starts
+				post_hook = nil,             -- Function to run after the scrolling animation ends
+				performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+			})
+			-- Neoscroll custom mappings
+			require("neoscroll.config").set_mappings({
+				["<C-u>"] = {'scroll', {'-vim.wo.scroll', 'true', '100'}},
+				["<C-d>"] = {'scroll', { 'vim.wo.scroll', 'true', '100'}},
+				['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '150'}},
+				['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '150'}},
+				['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}},
+				['<C-e>'] = {'scroll', { '0.10', 'false', '100'}},
+				['zt']    = {'zt', {'100'}},
+				['zz']    = {'zz', {'100'}},
+				['zb']    = {'zb', {'100'}},
+			})
+		end
+	},
+	{
+		'chentoast/marks.nvim',
+		config = function()
+			require('marks').setup()
+		end
+	},
+	{
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		opts = {}
+	},
 }
 
-require("core.keymaps")
+-- Load plugins first as some keymaps uses plugins
 require("core.plugin-manager")		-- Lazy plugin manager bootstrap
 require("lazy").setup(plugins)
 
+require("core.keymaps")
+
 -- ==== Plugin Settings ====
-require("core.plugins.nvim-tree")		-- Nvim Tree
 require("core.plugins.lsp")				-- LSP
+require("core.plugins.nvim-tree")		-- Nvim Tree
 require("core.plugins.completions")		-- Autocomplete
-require('tabline').setup({				-- Tabline
-    show_index = true,			-- show tab index
-    show_modify = true,			-- show buffer modification indicator
-    show_icon = true,			-- show file extension icon
-    fnamemodify = ':t',			-- file name modifier
-    modify_indicator = '*',		-- modify indicator
-    no_name = 'No name',		-- no name buffer name
-    brackets = { '[', ']' },	-- file name brackets surrounding
-    inactive_tab_max_length = 0	-- max length of inactive tab titles, 0 to ignore
-})
-
-local lualineTheme = require'lualine.themes.onedark'
-lualineTheme.normal.a.bg = '#4078f2'
-lualineTheme.insert.a.bg = '#50a14f'
-require('lualine').setup {
-	options = {
-		icons_enabled = true,
-		theme = lualineTheme,
-		component_separators = { left = '', right = ''},
-		section_separators = { left = '', right = ''},
-		disabled_filetypes = {
-			statusline = {},
-			winbar = {},
-		},
-		ignore_focus = {},
-		always_divide_middle = true,
-		globalstatus = false,
-		refresh = {
-			statusline = 1000,
-			tabline = 1000,
-			winbar = 1000,
-		}
-	},
-	sections = {
-		lualine_a = {'mode'},
-		lualine_b = {'branch', 'diff', 'diagnostics'},
-		lualine_c = {'filename'},
-		lualine_x = {'filetype', 'encoding', 'fileformat'},
-		lualine_y = {'progress'},
-		lualine_z = {'location'}
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = {'filename'},
-		lualine_x = {'filetype', 'encoding', 'fileformat'},
-		lualine_y = {'progress'},
-		lualine_z = {'location'}
-	},
-	tabline = {
-		lualine_a = {'buffers'},
-		lualine_b = {},
-		lualine_c = {},
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {'tabs'}
-	},
-	winbar = {},
-	inactive_winbar = {},
-	extensions = {}
-}
-require('glow').setup({
-	install_path = "~/bin"
-})
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"bashls",
-		"clangd",
-		"lua_ls",
-		"pylsp"
-	}
-})
-require("ibl").setup()
 
 
--- Telescope keybinds
-local telescopeBuiltin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', telescopeBuiltin.find_files, {})
-vim.keymap.set('n', '<leader>fg', telescopeBuiltin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', telescopeBuiltin.buffers, {})
-vim.keymap.set('n', '<leader>fh', telescopeBuiltin.help_tags, {})
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.cursorline = true
+-- Change cursor in normal & visual mode from block to line
+vim.opt.guicursor = "c-sm:block,n-v-i-ci-ve:ver25,r-cr-o:hor20"
 
-vim.keymap.set('n', '<leader>gf', telescopeBuiltin.git_files, {})
-vim.keymap.set('n', '<leader>gc', telescopeBuiltin.git_commits, {})
-
-vim.keymap.set('n', '<leader>bt', telescopeBuiltin.current_buffer_tags, {})
-vim.keymap.set('n', '<leader>bb', telescopeBuiltin.buffers, {})
-
-vim.keymap.set('n', '<leader>ts', telescopeBuiltin.treesitter, {})
-vim.keymap.set('n', '<leader>jl', telescopeBuiltin.jumplist, {})
-vim.keymap.set('n', '<leader>cs', telescopeBuiltin.colorscheme, {})
-
-
--- ==== Keybinds ====
-vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {})
-vim.keymap.set('n', '<leader>bx', ':bd<CR>', {})
-vim.keymap.set('n', '<leader>n', ':bnext<CR>', {})
-vim.keymap.set('n', '<leader>p', ':bprev<CR>', {})
 
 -- ==== Startup ====
 -- vim.cmd("autocmd BufWrite * mkview")
