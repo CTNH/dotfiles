@@ -56,6 +56,11 @@ vim.keymap.set(
 	end
 )
 
+-- LSP
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})		-- 'K' to show
+-- vim.keymap.set('n', 'K', vim.lsp.buf.definition, {})
+-- Renames all references to symbol under cursor
+-- vim.keymap.set('n', 'K', vim.lsp.buf.rename, {})
 
 -- Telescope keybinds
 local telescopeBuiltin = require('telescope.builtin')
