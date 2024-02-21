@@ -32,17 +32,19 @@ vim.keymap.set('n', '<leader>p',  ':bprev<CR>', {})
 
 
 -- Terminal
-vim.keymap.set('t', '<s-esc>', [[<C-\><C-n>]],		 {noremap = true})
-vim.keymap.set('t', '<C-h>',   [[<C-\><C-n><C-W>h]], {noremap = true})
-vim.keymap.set('t', '<C-j>',   [[<C-\><C-n><C-W>j]], {noremap = true})
-vim.keymap.set('t', '<C-k>',   [[<C-\><C-n><C-W>k]], {noremap = true})
-vim.keymap.set('t', '<C-l>',   [[<C-\><C-n><C-W>l]], {noremap = true})
+vim.keymap.set('t', '<s-esc>', [[<C-\><C-n>]],		 {noremap = true})		-- Put terminal in normal mode
+vim.keymap.set('t', '<a-v>', [[<C-\><C-n>]],		 {noremap = true})		-- Put terminal in normal mode
+vim.keymap.set('t', '<a-e>',   "<cmd>:q<CR>",		 {noremap = true})		-- Close terminal
 
+-- Toggleterm
+vim.keymap.set('n', '<a-e>', "<cmd>ToggleTerm<CR>", { noremap = true })
+vim.keymap.set('n', '<leader>tv', "<cmd>ToggleTerm direction=vertical<CR>", { noremap = true })		-- Open toggleterm vertically
+vim.keymap.set('n', '<leader>tf', "<cmd>ToggleTerm direction=float<CR>", { noremap = true })		-- Open toggleterm horizontally
 vim.keymap.set(		-- Lazygit
 	"n",
 	"<leader>tl",
 	"<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<CR>",
-	{noremap = true, silent = true}
+	{ noremap = true, silent = true }
 )
 vim.keymap.set(
 	"v",

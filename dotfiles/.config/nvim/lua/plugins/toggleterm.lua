@@ -4,7 +4,7 @@ return {
 		version = "*",
 		opts = {
 			open_mapping = [[<c-`>]],
-			-- size = 20,
+			size = 75,
 			hide_numbers = true,
 			persist_mode = true,
 			persist_size = true,
