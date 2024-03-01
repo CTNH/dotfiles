@@ -7,6 +7,9 @@ return {
 			local lualineTheme = require'lualine.themes.onedark'
 			lualineTheme.normal.a.bg = '#4078f2'
 			lualineTheme.insert.a.bg = '#50a14f'
+			local function getWordCount()
+				return tostring(vim.fn.wordcount().words)
+			end
 			require('lualine').setup {
 				options = {
 					icons_enabled = true,
@@ -30,7 +33,7 @@ return {
 					lualine_a = {'mode'},
 					lualine_b = {'branch', 'diff', 'diagnostics'},
 					lualine_c = {'filename'},
-					lualine_x = {'filetype', 'encoding', 'fileformat'},
+					lualine_x = {{getWordCount}, 'filetype', 'encoding', 'fileformat'},
 					lualine_y = {'progress'},
 					lualine_z = {'location'}
 				},
