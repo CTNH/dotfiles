@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.keymap.set("n", "<leader>s", ":w<CR>", {noremap=true})
 
 -- Windows keys
 vim.api.nvim_set_keymap("n", "<a-h>", "<c-w>h", {noremap=true})
@@ -16,12 +17,13 @@ vim.api.nvim_set_keymap("i", "<c-bs>", "<esc>cvb", {noremap=true})
 -- Emacs keybinds in insert mode
 vim.keymap.set("i", "<c-a>", "<Home>",    {noremap=true})
 vim.keymap.set("i", "<c-b>", "<Left>",    {noremap=true})
-vim.keymap.set("i", "<c-d>", "<Delete>",     {noremap=true})
 vim.keymap.set("i", "<c-e>", "<End>",     {noremap=true})
 vim.keymap.set("i", "<c-f>", "<Right>",   {noremap=true})
+vim.keymap.set("i", "<c-s>", "<Delete>",  {noremap=true})
 vim.keymap.set("i", "<a-g>", "<c-Left>",  {noremap=true})
 vim.keymap.set("i", "<a-f>", "<c-Right>", {noremap=true})
 vim.keymap.set("i", "<a-d>", "<ESC>lvec", {noremap=true})
+vim.keymap.set("i", "<a-q>", "<ESC>",     {noremap=true})
 
 
 -- ==== Buffers ====
