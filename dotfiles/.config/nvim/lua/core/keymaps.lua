@@ -16,6 +16,7 @@ vim.api.nvim_set_keymap("i", "<c-bs>", "<esc>cvb", {noremap=true})
 -- Emacs keybinds in insert mode
 vim.keymap.set("i", "<c-a>", "<Home>",    {noremap=true})
 vim.keymap.set("i", "<c-b>", "<Left>",    {noremap=true})
+vim.keymap.set("i", "<c-d>", "<Delete>",     {noremap=true})
 vim.keymap.set("i", "<c-e>", "<End>",     {noremap=true})
 vim.keymap.set("i", "<c-f>", "<Right>",   {noremap=true})
 vim.keymap.set("i", "<a-g>", "<c-Left>",  {noremap=true})
