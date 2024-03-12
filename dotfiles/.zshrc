@@ -69,7 +69,7 @@ alias virsh-list="virsh --connect qemu:///system list --all"
 alias virtmachine="nohup virt-manager --connect qemu:///system --show-domain-console "
 alias kvmstart='(){virsh --connect qemu:///system start $1 & virt-manager --connect qemu:///system --show-domain-console $1}'
 
-alias pandoc="docker run --rm --volume '`pwd`:/data' pandoc/core"
+alias pandoc="docker run --rm --volume '`pwd`:/data' pandoc/minimal"
 
 alias tmpv='(){mpv --profile=sw-fast --vo=kitty --vo-kitty-use-shm=yes --terminal --hwdec=auto $1}'
 
@@ -96,6 +96,8 @@ alias cdd='(){dir=$(find $1 -type d | fzf) ; cd "$dir"}'										# Cd into a di
 alias qvim='(){file=$(find $1 -type f | fzf) ; if [ ! -z $file ]; then vim "$file"; fi;}'		# Open a file in vim from fzf
 alias qmpv='(){file=$(find $1 | fzf) ; if [ ! -z $file ]; then mpv "$file"; fi;}'				# Open a file or folder in mpv from fzf
 
+# --- ffmpeg ---
+alias ffrec='ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0+0,0 -f pulse -ac 2 -i default $($FFREC_PATH)/$(date -u +"%Y%m%d%H%M%S").mkv'
 
 # ==== Run on Start ====
 # Custom script that does same as macchina
