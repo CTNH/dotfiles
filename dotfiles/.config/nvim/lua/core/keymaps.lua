@@ -25,6 +25,8 @@ vim.keymap.set("i", "<a-f>", "<c-Right>", {noremap=true})
 vim.keymap.set("i", "<a-d>", "<ESC>lvec", {noremap=true})
 vim.keymap.set("i", "<a-q>", "<ESC>",     {noremap=true})
 
+vim.keymap.set("v", "<a-q>", "<ESC>",     {noremap=true})
+
 
 -- ==== Buffers ====
 vim.keymap.set('n', '<C-t>', ':tabnew<CR>', { noremap = true })
