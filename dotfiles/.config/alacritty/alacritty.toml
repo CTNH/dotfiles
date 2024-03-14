@@ -1,0 +1,76 @@
+import = ["/home/hopkins/.config/alacritty/catppuccin-frappe_custom.toml"]
+working_directory = "None"
+
+[colors]
+transparent_background_colors = true
+
+[cursor.style]
+blinking = "Off"
+shape = "Beam"
+
+[font]
+size = 10.0
+
+[font.normal]
+# family = "Source Code Pro"
+family = "SourceCodeVF"
+#style = "Regular"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageUp"
+key = "PageUp"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageDown"
+key = "PageDown"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "Up"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "Down"
+mods = "Shift"
+
+[scrolling]
+history = 10000
+
+[selection]
+semantic_escape_chars = ",.│`|:\"' ()[]{}<>-_\t"
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+dynamic_title = true
+opacity = 0.98
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 110
+lines = 28
