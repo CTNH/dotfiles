@@ -8,6 +8,14 @@ return {
 				pickers = {
 					-- Show hidden files in find files
 					find_files = {hidden = true}
+				},
+				defaults = {
+					mappings = {
+						i = {
+							-- Ctrl+u to clear line
+							["<C-u>"] = false
+						}
+					}
 				}
 			})
 		end

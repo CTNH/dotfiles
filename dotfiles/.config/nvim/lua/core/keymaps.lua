@@ -20,12 +20,14 @@ vim.keymap.set("i", "<c-b>", "<Left>",    {noremap=true})
 vim.keymap.set("i", "<c-e>", "<End>",     {noremap=true})
 vim.keymap.set("i", "<c-f>", "<Right>",   {noremap=true})
 vim.keymap.set("i", "<c-s>", "<Delete>",  {noremap=true})
-vim.keymap.set("i", "<a-g>", "<c-Left>",  {noremap=true})
+vim.keymap.set("i", "<a-v>", "<c-Left>",  {noremap=true})
 vim.keymap.set("i", "<a-f>", "<c-Right>", {noremap=true})
 vim.keymap.set("i", "<a-d>", "<ESC>lvec", {noremap=true})
 vim.keymap.set("i", "<a-q>", "<ESC>",     {noremap=true})
+vim.keymap.set("i", "<a-r>", "<bs>",     {noremap=true})
 
 vim.keymap.set("v", "<a-q>", "<ESC>",     {noremap=true})
+
 
 
 -- ==== Buffers ====
