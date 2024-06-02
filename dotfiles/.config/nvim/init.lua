@@ -27,4 +27,5 @@ vim.cmd("set hidden")		-- Allows switching buffer without saving
 vim.cmd("set nofoldenable")	-- Disable folds at file open
 -- vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent
 vim.cmd("highlight LineNr ctermfg=242")		-- Allows line numbers to be more visible
+vim.cmd("set notermguicolors")
 
