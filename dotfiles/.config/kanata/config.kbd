@@ -1,0 +1,48 @@
+#|
+	Custom keyboard config mixing vi and emacs keybinds
+|#
+
+(defcfg
+	process-unmapped-keys yes
+)
+
+(defsrc)
+
+(deflayermap (default)
+	caps	@cap
+	grv		@grv
+	tab		@tab
+	/		@slh
+	;		@sco
+)
+
+(deflayermap (vi)
+	h		left
+	j		down
+	k		up
+	l		right
+	d		pgdn
+	u		pgup
+)
+
+(deflayermap (emacs)
+	a		home
+	e		end
+	h		bspc
+	d		del
+	b		left
+	f		right
+	n		down
+	p		up
+	j		ret
+)
+
+;; layer-toggle is same as layer-while-held
+(defalias
+  cap	(tap-hold-press 110 110 esc ctl)
+  grv	(tap-hold-press 110 110 grv caps)
+  tab	(tap-hold-press 130 130 tab (layer-toggle vi))
+  slh	(tap-hold-press 130 130 / ctl)
+  sco	(tap-hold-press 110 110 ; (layer-toggle emacs))
+)
+
