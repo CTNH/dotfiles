@@ -12,7 +12,7 @@ return {
 		require("markview").setup({
 			headings = require("markview.presets").headings.glow_labels,
 			modes = { "n", "i", "no", "c" },
-			hybrid_modes = { "n", "i" },
+			hybrid_modes = { "i" },
 
 			-- This is nice to have
 			callbacks = {
