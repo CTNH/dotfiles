@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "Ape/open-with-cmd", rev = "8d7abc8" }, { use = "dedukun/relative-motions", rev = "89d0cb9" }, { use = "dedukun/bookmarks", rev = "600f87c" }, { use = "yazi-rs/plugins:git", rev = "49137fe" }, { use = "Reledia/glow", rev = "4e016fa" }]
+deps = [{ use = "Ape/open-with-cmd", rev = "8d7abc8" }, { use = "dedukun/relative-motions", rev = "89d0cb9" }, { use = "dedukun/bookmarks", rev = "600f87c" }, { use = "yazi-rs/plugins:git", rev = "49137fe" }, { use = "Reledia/glow", rev = "4e016fa" }, { use = "Ape/smart-enter", rev = "7bf44b7" }]
 
 [flavor]
 deps = []
