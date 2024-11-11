@@ -23,6 +23,7 @@ vim.cmd("autocmd BufWinEnter *.* silent! loadview")		-- Load folds
 
 vim.cmd("colorscheme palenight")
 vim.cmd("set number")		-- Line numbers
+vim.cmd("set rnu")			-- Relative Line numbers
 vim.cmd("set hidden")		-- Allows switching buffer without saving
 vim.cmd("set nofoldenable")	-- Disable folds at file open
 -- vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent

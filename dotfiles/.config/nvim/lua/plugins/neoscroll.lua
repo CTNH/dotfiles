@@ -25,17 +25,22 @@ return {
 				performance_mode = false,    -- Disable "Performance Mode" on all buffers.
 			})
 			-- Neoscroll custom mappings
-			require("neoscroll.config").set_mappings({
-				["<C-u>"] = {'scroll', {'-vim.wo.scroll', 'true', '100'}},
-				["<C-d>"] = {'scroll', { 'vim.wo.scroll', 'true', '100'}},
-				['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '150'}},
-				['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '150'}},
-				['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}},
-				['<C-e>'] = {'scroll', { '0.10', 'false', '100'}},
-				['zt']    = {'zt', {'100'}},
-				['zz']    = {'zz', {'100'}},
-				['zb']    = {'zb', {'100'}},
-			})
+			local ns = require('neoscroll')
+			local keymap = {
+			  ["<C-u>"] = function() ns.ctrl_u({ duration = 100 }) end;
+			  ["<C-d>"] = function() ns.ctrl_d({ duration = 100 }) end;
+			  ["<C-b>"] = function() ns.ctrl_b({ duration = 150 }) end;
+			  ["<C-f>"] = function() ns.ctrl_f({ duration = 150 }) end;
+			  ["<C-y>"] = function() ns.scroll(-0.10, { move_cursor=false; duration = 100 }) end;
+			  ["<C-e>"] = function() ns.scroll(0.10, { move_cursor=false; duration = 100 }) end;
+			  ["zt"]    = function() ns.zt({ half_win_duration = 100 }) end;
+			  ["zz"]    = function() ns.zz({ half_win_duration = 100 }) end;
+			  ["zb"]    = function() ns.zb({ half_win_duration = 100 }) end;
+			}
+			local modes = { 'n', 'v', 'x' }
+			for key, func in pairs(keymap) do
+			  vim.keymap.set(modes, key, func)
+			end
 		end
 	}
 }

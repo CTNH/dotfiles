@@ -2,6 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.keymap.set("n", "<leader>s", ":w<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>l", ":set rnu!<CR>", {noremap=true})
 
 -- Windows keys
 vim.api.nvim_set_keymap("n", "<a-h>", "<c-w>h", {noremap=true})
