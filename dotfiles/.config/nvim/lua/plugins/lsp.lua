@@ -14,8 +14,10 @@ return {
 				ensure_installed = {
 					"bashls",
 					"clangd",
+					"gopls",
+					"jdtls",
 					"lua_ls",
-					"pylsp"
+					"pylsp",
 				}
 			})
 		end
@@ -25,21 +27,12 @@ return {
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-			require("lspconfig").lua_ls.setup {
-				capabilities = capabilities
-			}
-			require("lspconfig").clangd.setup {
-				capabilities = capabilities
-			}
-			require("lspconfig").pylsp.setup {
-				capabilities = capabilities
-			}
-			require("lspconfig").jdtls.setup {
-				capabilities = capabilities
-			}
-			require("lspconfig").bashls.setup {
-				capabilities = capabilities
-			}
+			require("lspconfig").bashls.setup 	{ capabilities = capabilities }
+			require("lspconfig").clangd.setup 	{ capabilities = capabilities }
+			require("lspconfig").gopls.setup 	{ capabilities = capabilities }
+			require("lspconfig").jdtls.setup 	{ capabilities = capabilities }
+			require("lspconfig").lua_ls.setup 	{ capabilities = capabilities }
+			require("lspconfig").pylsp.setup 	{ capabilities = capabilities }
 		end
 	},
 }

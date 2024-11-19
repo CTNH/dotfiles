@@ -9,6 +9,8 @@ vim.api.nvim_set_keymap("n", "<a-h>", "<c-w>h", {noremap=true})
 vim.api.nvim_set_keymap("n", "<a-j>", "<c-w>j", {noremap=true})
 vim.api.nvim_set_keymap("n", "<a-k>", "<c-w>k", {noremap=true})
 vim.api.nvim_set_keymap("n", "<a-l>", "<c-w>l", {noremap=true})
+vim.api.nvim_set_keymap("n", "<a-->", ":vert resize-1<CR>", {noremap=true})
+vim.api.nvim_set_keymap("n", "<a-=>", ":vert resize+1<CR>", {noremap=true})
 
 
 -- Delete word
@@ -32,11 +34,11 @@ vim.keymap.set("v", "<a-q>", "<ESC>",     {noremap=true})
 
 
 -- ==== Buffers ====
-vim.keymap.set('n', '<C-t>', ':tabnew<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {})
 vim.keymap.set('n', '<leader>bx', ':bd<CR>', 	{})
 vim.keymap.set('n', '<leader>n',  ':bnext<CR>', {})
 vim.keymap.set('n', '<leader>p',  ':bprev<CR>', {})
+vim.keymap.set('n', '<leader>bn',  ':enew<CR>:w ', {})
+vim.keymap.set('n', '<leader>N',  ':enew<CR>:w ', {})
 
 
 -- Terminal
