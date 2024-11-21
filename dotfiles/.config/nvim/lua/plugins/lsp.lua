@@ -33,6 +33,7 @@ return {
 			require("lspconfig").jdtls.setup 	{ capabilities = capabilities }
 			require("lspconfig").lua_ls.setup 	{ capabilities = capabilities }
 			require("lspconfig").pylsp.setup 	{ capabilities = capabilities }
+			require("lspconfig").ts_ls.setup 	{ capabilities = capabilities }
 		end
 	},
 }

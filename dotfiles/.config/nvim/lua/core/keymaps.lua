@@ -70,9 +70,12 @@ vim.keymap.set(
 
 -- LSP
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})		-- 'K' to show
--- vim.keymap.set('n', 'K', vim.lsp.buf.definition, {})
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
+vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, {})
+vim.keymap.set('n', 'gD', vim.lsp.buf.definition, {})
 -- Renames all references to symbol under cursor
--- vim.keymap.set('n', 'K', vim.lsp.buf.rename, {})
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
 
 -- Telescope keybinds
 local telescopeBuiltin = require('telescope.builtin')
