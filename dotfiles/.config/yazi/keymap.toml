@@ -200,7 +200,8 @@ keymap = [
 	{ on = "[", run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
 	{ on = "]", run = "tab_switch 1 --relative",  desc = "Switch to the next tab" },
 	{ on = ",", 	run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
-	{ on = "<Tab>", run = "tab_switch 1 --relative",  desc = "Switch to the next tab" },
+	{ on = "<BackTab>",	run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
+	{ on = "<Tab>", 	run = "tab_switch 1 --relative",  desc = "Switch to the next tab" },
 
 	{ on = "{", run = "tab_swap -1", desc = "Swap current tab with previous tab" },
 	{ on = "}", run = "tab_swap 1",  desc = "Swap current tab with next tab" },
