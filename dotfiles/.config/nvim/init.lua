@@ -21,12 +21,12 @@ vim.opt.shell = "/usr/bin/zsh"
 vim.cmd("autocmd BufWinLeave *.* mkview")				-- Save folds
 vim.cmd("autocmd BufWinEnter *.* silent! loadview")		-- Load folds
 
-vim.cmd("colorscheme palenight")
-vim.cmd("set number")		-- Line numbers
-vim.cmd("set rnu")			-- Relative Line numbers
-vim.cmd("set hidden")		-- Allows switching buffer without saving
-vim.cmd("set nofoldenable")	-- Disable folds at file open
+vim.o.nu = true		-- Line numbers
+vim.o.rnu = true	-- Relative Line numbers
+vim.o.hid = true	-- Allows switching buffer without saving
+vim.o.fen = false	-- Disable folds at file open
 -- vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent
 vim.cmd("highlight LineNr ctermfg=242")		-- Allows line numbers to be more visible
-vim.cmd("set notermguicolors")
+-- vim.cmd("colorscheme palenight")
+-- vim.cmd("set notermguicolors")
 
