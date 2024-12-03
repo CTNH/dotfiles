@@ -37,7 +37,7 @@ vim.keymap.set("v", "<a-q>", "<ESC>",     {noremap=true})
 vim.keymap.set('n', '<leader>bx', ':bd<CR>', 	{})
 vim.keymap.set('n', '<leader>n',  ':bnext<CR>', {})
 vim.keymap.set('n', '<leader>p',  ':bprev<CR>', {})
-vim.keymap.set('n', '<leader>bn',  ':enew<CR>:w ', {})
+vim.keymap.set('n', '<leader>bn', ':enew<CR>:w ', {})
 vim.keymap.set('n', '<leader>N',  ':enew<CR>:w ', {})
 
 
@@ -71,8 +71,12 @@ vim.keymap.set(
 -- LSP
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})		-- 'K' to show
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, {})
-vim.keymap.set('n', 'gD', vim.lsp.buf.definition, {})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
+vim.keymap.set('n', '<leader>df', vim.lsp.buf.definition, {})
+vim.keymap.set('n', '<leader>dc', vim.lsp.buf.declaration, {})
+vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, {})
+
 -- Renames all references to symbol under cursor
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
@@ -89,6 +93,7 @@ vim.keymap.set('n', '<leader>gc', telescopeBuiltin.git_commits, {})
 
 vim.keymap.set('n', '<leader>bt', telescopeBuiltin.current_buffer_tags, {})
 vim.keymap.set('n', '<leader>bb', telescopeBuiltin.buffers, {})
+vim.keymap.set('n', '<leader>bf', telescopeBuiltin.current_buffer_fuzzy_find, {})
 
 vim.keymap.set('n', '<leader>ts', telescopeBuiltin.treesitter, {})
 vim.keymap.set('n', '<leader>jl', telescopeBuiltin.jumplist, {})
