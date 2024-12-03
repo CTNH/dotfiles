@@ -2,14 +2,13 @@
 return {
 	'hrsh7th/cmp-nvim-lsp',				-- nvim-cmp source for builtin LSP client
 	{
-		"williamboman/mason.nvim",
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
 		config = function()
-			require("mason").setup()
-		end
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
+			require("mason").setup()	-- Must be called before mason-lspconfig
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"bashls",
@@ -18,22 +17,16 @@ return {
 					"jdtls",
 					"lua_ls",
 					"pylsp",
+					"ts_ls",
+				},
+				handlers = {
+					function (server_name)	-- Optional default handler
+						require("lspconfig")[server_name].setup {
+							capabilities = require('cmp_nvim_lsp').default_capabilities()
+						}
+					end
 				}
 			})
-		end
-	},
-	{
-		'neovim/nvim-lspconfig',
-		config = function()
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-			require("lspconfig").bashls.setup 	{ capabilities = capabilities }
-			require("lspconfig").clangd.setup 	{ capabilities = capabilities }
-			require("lspconfig").gopls.setup 	{ capabilities = capabilities }
-			require("lspconfig").jdtls.setup 	{ capabilities = capabilities }
-			require("lspconfig").lua_ls.setup 	{ capabilities = capabilities }
-			require("lspconfig").pylsp.setup 	{ capabilities = capabilities }
-			require("lspconfig").ts_ls.setup 	{ capabilities = capabilities }
 		end
 	},
 }

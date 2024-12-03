@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- Lazy plugin manager bootstrap
 require("core.plugin-manager")
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {rocks = {enabled = false}})
 -- Keybinds
 require("core.keymaps")
 
