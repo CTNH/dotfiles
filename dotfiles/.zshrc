@@ -44,11 +44,11 @@ function bwu() {
     bw sync
 }
 
+source ~/.envvar		# Import variables
 # ==== Variables ==== 
 PATH=$PATH:~/bin/				# Append ~/bin to $PATH
 export BAT_THEME="TwoDark"		# Theme for bat
 export EDITOR=nvim
-export PAGER=bat
 export COREDUMP="/var/lib/systemd/coredump"
 #export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python	# Cache for python
 export LC_ALL="en_US.UTF-8"
@@ -58,6 +58,7 @@ alias r="echo > /dev/null"
 alias ls=lsd
 alias py=python
 alias rr=ranger
+alias yy=yazi
 alias df="df -h"
 alias wttr="curl wttr.in"
 alias map="npx mapscii"
@@ -72,6 +73,9 @@ alias kvmstart='(){virsh --connect qemu:///system start $1 & virt-manager --conn
 alias pandoc="docker run --rm --volume '`pwd`:/data' pandoc/minimal"
 
 alias tmpv='(){mpv --profile=sw-fast --vo=kitty --vo-kitty-use-shm=yes --terminal --hwdec=auto $1}'
+
+
+alias srcpy='(){source $PYVENV$1/bin/activate}'
 
 # --- yt-dlp ---
 alias ytbv="yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best\""
