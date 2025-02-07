@@ -1,4 +1,5 @@
-local function entry(_, args)
+--- @sync entry
+local function entry(_, job)
 	local parent = cx.active.parent
 	if not parent then return end
 
