@@ -7,35 +7,35 @@
 keymap = [
 	# Custom
 	{ on =  "o", run  = "plugin open-with-cmd", desc = "Open with command" },
-	{ on =  "O", run  = "plugin open-with-cmd --args=block", desc = "Open with command in the terminal" },
+	{ on =  "O", run  = "plugin open-with-cmd block", desc = "Open with command in the terminal" },
 	{ on =  "i", run = "open --interactive",          desc = "Open selected files interactively" },
 
 	{ on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 	{ on = "l", 	  run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 	{ on = "<Right>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
-	{ on = "<A-j>",	  run = "plugin parent-arrow --args=1",  desc = "Move down in parent directory" },
-	{ on = "<A-k>",	  run = "plugin parent-arrow --args=-1", desc = "Move up in parent directory" },
-	{ on = "<A-J>",	  run = "plugin parent-arrow --args=5",  desc = "Move down in parent directory" },
-	{ on = "<A-K>",	  run = "plugin parent-arrow --args=-5", desc = "Move up in parent directory" },
+	{ on = "<A-j>",	  run = "plugin parent-arrow 1",  desc = "Move down in parent directory" },
+	{ on = "<A-k>",	  run = "plugin parent-arrow -1", desc = "Move up in parent directory" },
+	{ on = "<A-J>",	  run = "plugin parent-arrow 5",  desc = "Move down in parent directory" },
+	{ on = "<A-K>",	  run = "plugin parent-arrow -5", desc = "Move up in parent directory" },
 
 	# Relative motions
-	{ on = [ "1" ], run = "plugin relative-motions --args=1", desc = "Move in relative steps" },
-	{ on = [ "2" ], run = "plugin relative-motions --args=2", desc = "Move in relative steps" },
-	{ on = [ "3" ], run = "plugin relative-motions --args=3", desc = "Move in relative steps" },
-	{ on = [ "4" ], run = "plugin relative-motions --args=4", desc = "Move in relative steps" },
-	{ on = [ "5" ], run = "plugin relative-motions --args=5", desc = "Move in relative steps" },
-	{ on = [ "6" ], run = "plugin relative-motions --args=6", desc = "Move in relative steps" },
-	{ on = [ "7" ], run = "plugin relative-motions --args=7", desc = "Move in relative steps" },
-	{ on = [ "8" ], run = "plugin relative-motions --args=8", desc = "Move in relative steps" },
-	{ on = [ "9" ], run = "plugin relative-motions --args=9", desc = "Move in relative steps" },
+	{ on = [ "1" ], run = "plugin relative-motions 1", desc = "Move in relative steps" },
+	{ on = [ "2" ], run = "plugin relative-motions 2", desc = "Move in relative steps" },
+	{ on = [ "3" ], run = "plugin relative-motions 3", desc = "Move in relative steps" },
+	{ on = [ "4" ], run = "plugin relative-motions 4", desc = "Move in relative steps" },
+	{ on = [ "5" ], run = "plugin relative-motions 5", desc = "Move in relative steps" },
+	{ on = [ "6" ], run = "plugin relative-motions 6", desc = "Move in relative steps" },
+	{ on = [ "7" ], run = "plugin relative-motions 7", desc = "Move in relative steps" },
+	{ on = [ "8" ], run = "plugin relative-motions 8", desc = "Move in relative steps" },
+	{ on = [ "9" ], run = "plugin relative-motions 9", desc = "Move in relative steps" },
 
 	{ on = [ "e", "d" ], run = "shell 'dragon-drop -a -x -T \"$@\"'", desc = "Open with dragon-drop" },
 	{ on = [ "e", "z" ], run = "shell 'zip -r \"$0.zip\" \"$0\"'", desc = "Zip selected folder" },
 
-	{ on = [ "M", "m" ], run = "plugin bookmarks --args=save",   desc = "Save current position as a bookmark" },
-	{ on = [ "M", "d" ], run = "plugin bookmarks --args=delete", desc = "Delete a bookmark" },
-	{ on = [ "'" ], 	 run = "plugin bookmarks --args=jump",   desc = "Jump to a bookmark" },
-	{ on = [ "<`>" ], 	 run = "plugin bookmarks --args=jump",   desc = "Jump to a bookmark" },
+	{ on = [ "M", "m" ], run = "plugin bookmarks save",   desc = "Save current position as a bookmark" },
+	{ on = [ "M", "d" ], run = "plugin bookmarks delete", desc = "Delete a bookmark" },
+	{ on = [ "'" ], 	 run = "plugin bookmarks jump",   desc = "Jump to a bookmark" },
+	{ on = [ "<`>" ], 	 run = "plugin bookmarks jump",   desc = "Jump to a bookmark" },
 
 	{ on = [ "c", "b" ], run = "shell 'vimv \"$@\"' --block", desc = "Bulk rename" },
 	{ on = [ "c", "m", "a", "x" ], run = "shell 'chmod u+x \"$1\"'", desc = "Add execute flag" },
@@ -72,8 +72,8 @@ keymap = [
 	{ on = "<PageUp>",     run = "arrow -100%", desc = "Move cursor up one page" },
 	{ on = "<PageDown>",   run = "arrow 100%",  desc = "Move cursor down one page" },
 
-	{ on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
-	{ on = "G",          run = "arrow 99999999",  desc = "Move cursor to the bottom" },
+	{ on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+	{ on = "G",          run = "arrow bot",  desc = "Move cursor to the bottom" },
 
 	# Navigation
 	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
