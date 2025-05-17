@@ -10,6 +10,7 @@ prepend_fetchers = [
 [manager]
 linemode = "size"
 # linemode = "size_and_mtime"
+sort_by = "natural"
 
 [opener]
 edit = [

@@ -5,6 +5,7 @@ return {
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
 			local lualineTheme = require'lualine.themes.onedark'
+			lualineTheme = require'lualine.themes.material'
 			lualineTheme.normal.a.bg = '#4078f2'
 			lualineTheme.insert.a.bg = '#50a14f'
 			local function getWordCount()
