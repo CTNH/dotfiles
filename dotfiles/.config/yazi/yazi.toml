@@ -7,7 +7,7 @@ prepend_fetchers = [
 	{ id = "git", name = "*", run = "git" },
 ]
 
-[manager]
+[mgr]
 linemode = "size"
 # linemode = "size_and_mtime"
 sort_by = "natural"
