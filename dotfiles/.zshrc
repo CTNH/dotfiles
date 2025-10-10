@@ -54,6 +54,7 @@ export COREDUMP="/var/lib/systemd/coredump"
 export LC_ALL="en_US.UTF-8"
 
 # ==== Aliases ====
+alias tz='tzone=$(timedatectl list-timezones | fzf) && echo "$tzone" && TZ="$tzone" date'
 alias r="echo > /dev/null"
 alias ls=lsd
 alias py=python
