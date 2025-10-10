@@ -23,6 +23,7 @@
 	l		right
 	d		pgdn
 	u		pgup
+	g		C-home
 )
 
 (deflayermap (emacs)
@@ -35,6 +36,7 @@
 	n		down
 	p		up
 	j		ret
+	w		C-bspc
 )
 
 ;; layer-toggle is same as layer-while-held
