@@ -117,7 +117,7 @@ keymap = [
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = ":",         run = "shell --interactive",         desc = "Run a shell command" },
 	{ on = ";",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
-	{ on = ".",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
+	# { on = ".",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "<Backspace>",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "s",         run = "search fd",                   desc = "Search files by name using fd" },
 	{ on = "S",         run = "search rg",                   desc = "Search files by content using ripgrep" },
@@ -200,6 +200,7 @@ keymap = [
 	{ on = "[", run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
 	{ on = "]", run = "tab_switch 1 --relative",  desc = "Switch to the next tab" },
 	{ on = ",", 	run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
+	{ on = ".", 	run = "tab_switch 1 --relative", desc = "Switch to the previous tab" },
 	{ on = "<BackTab>",	run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
 	{ on = "<Tab>", 	run = "tab_switch 1 --relative",  desc = "Switch to the next tab" },
 
@@ -229,6 +230,7 @@ keymap = [
 	{ on = "<Down>", run = "arrow 1",  desc = "Move cursor down" },
 
 	{ on = "<Enter>", run = "inspect", desc = "Inspect the task" },
+	{ on = "i", run = "inspect", desc = "Inspect the task" },
 	{ on = "x",       run = "cancel",  desc = "Cancel the task" },
 
 	# Help
