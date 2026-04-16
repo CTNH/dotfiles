@@ -17,6 +17,7 @@ keymap = [
 	{ on = "<A-k>",	  run = "plugin parent-arrow -1", desc = "Move up in parent directory" },
 	{ on = "<A-J>",	  run = "plugin parent-arrow 5",  desc = "Move down in parent directory" },
 	{ on = "<A-K>",	  run = "plugin parent-arrow -5", desc = "Move up in parent directory" },
+	{ on = "B", run = "spot", desc = "Spot hovered file" },
 
 	# Relative motions
 	{ on = [ "1" ], run = "plugin relative-motions 1", desc = "Move in relative steps" },

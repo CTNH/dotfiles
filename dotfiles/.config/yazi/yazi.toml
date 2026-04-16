@@ -15,23 +15,24 @@ sort_by = "natural"
 [opener]
 edit = [
 	{ run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'nvim %*',    block = true,  desc = "Neovim",         for = "windows" },
 	{ run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
-	{ run = 'code -w %*', block = true,  desc = "code (block)",   for = "windows" },
 ]
 open = [
 	{ run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
 	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
-	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+	{ run = 'start "" %*',   orphan = true, desc = "Open", for = "windows" },
 ]
 reveal = [
 	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
 	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
-	{ run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
+	{ run = 'explorer /select,%s1',  orphan = true, desc = "Reveal", for = "windows" },
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
 	{ run = 'for file in "$@"; do unzip -d "${file%.*}" "$file"; done', desc = "Extract here", for = "unix" },
 	# { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ run = '7zFM %*',     orphan = true, desc = "7zFM",         for = "windows" },
 	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 play = [
@@ -59,6 +60,10 @@ archive_rar = [
 
 [open]
 rules = [
+	# Scripts
+	{ url = "*.bat", use = [ "edit", "open", "reveal" ] },
+	{ url = "*.sln", use = [ "open", "edit", "reveal" ] },
+
 	# Folder
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text
