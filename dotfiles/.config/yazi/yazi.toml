@@ -14,48 +14,48 @@ sort_by = "natural"
 
 [opener]
 edit = [
-	{ run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-	{ run = 'nvim %*',    block = true,  desc = "Neovim",         for = "windows" },
-	{ run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
+	{ run = '${EDITOR:-vi} %s', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'nvim %s',    block = true,  desc = "Neovim",         for = "windows" },
+	{ run = 'code %s',    orphan = true, desc = "code",           for = "windows" },
 ]
 open = [
-	{ run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
-	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
-	{ run = 'start "" %*',   orphan = true, desc = "Open", for = "windows" },
+	{ run = 'xdg-open %s1',                desc = "Open", for = "linux" },
+	{ run = 'open %s',                    desc = "Open", for = "macos" },
+	{ run = 'start "" %s',   orphan = true, desc = "Open", for = "windows" },
 ]
 reveal = [
-	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
-	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
+	{ run = 'xdg-open "$(dirname %s1)"',           desc = "Reveal", for = "linux" },
+	{ run = 'open -R %s1',                         desc = "Reveal", for = "macos" },
 	{ run = 'explorer /select,%s1',  orphan = true, desc = "Reveal", for = "windows" },
-	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+	{ run = '''exiftool %s1; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-	{ run = 'for file in "$@"; do unzip -d "${file%.*}" "$file"; done', desc = "Extract here", for = "unix" },
-	# { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-	{ run = '7zFM %*',     orphan = true, desc = "7zFM",         for = "windows" },
-	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+	{ run = 'for file in %s; do unzip -d "${file%.*}" "$file"; done', desc = "Extract here", for = "unix" },
+	# { run = 'ya pub extract --list %s', desc = "Extract here", for = "unix" },
+	{ run = '7zFM %s',     orphan = true, desc = "7zFM",         for = "windows" },
+	{ run = 'ya pub extract --list %s',   desc = "Extract here", for = "windows" },
 ]
 play = [
-	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
-	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+	{ run = 'mpv --force-window %s', orphan = true, for = "unix" },
+	{ run = 'mpv --force-window %s', orphan = true, for = "windows" },
+	{ run = '''mediainfo %s1; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 
 imgs = [
-	{ run = '~/bin/rifle_sxiv.sh -- "$@"', orphan = true, desc = "sxiv", for = "unix" },
+	{ run = '~/bin/rifle_sxiv.sh -- %s', orphan = true, desc = "sxiv", for = "unix" },
 ]
 # Archives
 archives = [
-	{ run = 'tar vvtf "$1" | $PAGER', block = true, desc = "Preview", for = "unix" },
-	{ run = 'for file in "$@"; do tar vvxf "$file"; done', desc = "Extract here", for = "unix" },
+	{ run = 'tar vvtf %s1 | $PAGER', block = true, desc = "Preview", for = "unix" },
+	{ run = 'for file in %s; do tar vvxf "$file"; done', desc = "Extract here", for = "unix" },
 ]
 archive_zip = [
-	{ run = 'unzip -l "$1" | less', block = true, desc = "Preview", for = "unix" },
-	{ run = 'for file in "$@"; do unzip -d "${file%.*}" "$file"; done', desc = "Extract here", for = "unix" },
+	{ run = 'unzip -l %s1 | less', block = true, desc = "Preview", for = "unix" },
+	{ run = 'for file in %s; do unzip -d "${file%.*}" "$file"; done', desc = "Extract here", for = "unix" },
 ]
 archive_rar = [
-	{ run = 'unrar l "$1" | less', block = true, desc = "Preview", for = "unix" },
-	{ run = 'for file in "$@"; do unrar x "$file"; done', desc = "Extract here", for = "unix" },
+	{ run = 'unrar l %s1 | less', block = true, desc = "Preview", for = "unix" },
+	{ run = 'for file in %s; do unrar x "$file"; done', desc = "Extract here", for = "unix" },
 ]
 
 [open]
