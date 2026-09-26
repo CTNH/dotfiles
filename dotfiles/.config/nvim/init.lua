@@ -25,6 +25,10 @@ vim.o.nu = true		-- Line numbers
 vim.o.rnu = true	-- Relative Line numbers
 vim.o.hid = true	-- Allows switching buffer without saving
 vim.o.fen = false	-- Disable folds at file open
+
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 -- vim.cmd("highlight Normal ctermbg=none")	-- Make background transparent
 vim.cmd("highlight LineNr ctermfg=242")		-- Allows line numbers to be more visible
 -- vim.cmd("colorscheme palenight")
