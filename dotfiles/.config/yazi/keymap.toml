@@ -30,7 +30,7 @@ keymap = [
 	{ on = [ "8" ], run = "plugin relative-motions 8", desc = "Move in relative steps" },
 	{ on = [ "9" ], run = "plugin relative-motions 9", desc = "Move in relative steps" },
 
-	{ on = [ "e", "d" ], run = "shell 'dragon-drop -a -x -T \"$@\"'", desc = "Open with dragon-drop" },
+	{ on = [ "e", "d" ], run = "shell 'dragon-drop -a -x -T %s'", desc = "Open with dragon-drop" },
 	{ on = [ "e", "z" ], run = "shell 'zip -r \"$0.zip\" \"$0\"'", desc = "Zip selected folder" },
 
 	{ on = [ "M", "m" ], run = "plugin bookmarks save",   desc = "Save current position as a bookmark" },
